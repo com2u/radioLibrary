@@ -20,13 +20,13 @@ Radio Library lets you **own your music**. Every song played on your favorite ra
 ## Screenshots
 
 ### Main Library View
-*[screenshot: song list with search, filters, ratings, favorites]*
+![Main Library](screenshots/01-library.png)
 
 ### Player with Waveform
-*[screenshot: player bar with waveform, clip mode, transport controls]*
+![Player Waveform](screenshots/02-player.png)
 
 ### Recording Control
-*[screenshot: station management, start/stop recording, live stats]*
+![Recording Control](screenshots/03-recording.png)
 
 ## Architecture
 
