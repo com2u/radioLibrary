@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Example Station 1",
+        "url": "https://example.com/stream1.mp3",
+        "path": "Example1",
+        "default_enabled": false
+    },
+    {
+        "name": "Example Station 2",
+        "url": "https://example.com/stream2.mp3",
+        "path": "Example2",
+        "default_enabled": false
+    }
+]

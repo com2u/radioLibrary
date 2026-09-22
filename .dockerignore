@@ -1,0 +1,11 @@
+node_modules
+.git
+__pycache__
+*.pyc
+.hermes
+*.log
+backup
+radio_project.md
+codereview.md
+scripts-docs
+backend/library_cache.json

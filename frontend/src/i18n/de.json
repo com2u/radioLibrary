@@ -1,0 +1,19 @@
+{
+  "header.filter": "Filter",
+  "header.sort": "Sortieren",
+  "header.reload": "Neu laden",
+  "header.recording": "Aufnahme",
+  "header.playlists": "Playlists",
+  "player.play": "Wiedergabe/Pause (Leertaste)",
+  "player.prev": "Vorheriger (Pfeil Hoch)",
+  "player.next": "Nächster (Pfeil Runter)",
+  "player.clip": "Clip-Modus (C)",
+  "player.metadata": "Metadaten (M)",
+  "player.playlist": "Zu Playlist (A/B)",
+  "filter.title": "Filter",
+  "filter.close": "Schließen",
+  "sort.title": "Sortierung",
+  "sort.close": "Schließen",
+  "confirm.delete": "Löschen",
+  "confirm.cancel": "Abbrechen"
+}

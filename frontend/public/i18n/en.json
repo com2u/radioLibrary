@@ -1,0 +1,19 @@
+{
+  "header.filter": "Filter",
+  "header.sort": "Sort",
+  "header.reload": "Reload",
+  "header.recording": "Recording",
+  "header.playlists": "Playlists",
+  "player.play": "Play/Pause (Space)",
+  "player.prev": "Previous (Arrow Up)",
+  "player.next": "Next (Arrow Down)",
+  "player.clip": "Clip Mode (C)",
+  "player.metadata": "Metadata (M)",
+  "player.playlist": "Add to Playlist (A/B)",
+  "filter.title": "Filter",
+  "filter.close": "Close",
+  "sort.title": "Sort Order",
+  "sort.close": "Close",
+  "confirm.delete": "Delete",
+  "confirm.cancel": "Cancel"
+}

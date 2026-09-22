@@ -1,0 +1,33 @@
+# Build
+frontend/dist/
+frontend/node_modules/
+__pycache__/
+*.pyc
+*.pyo
+
+# Runtime data (personal)
+backend/data.json
+backend/library_cache.json
+*.db
+*.sqlite
+
+# Backups
+backups/
+
+# Copied scripts
+scripts-docs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.tar
+
+# Env
+.env
+.env.local

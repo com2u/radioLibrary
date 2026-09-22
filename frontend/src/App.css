@@ -1,0 +1,897 @@
+/* ═══════════════════════════════════════════════════════════════
+   Radio Library – Modern Dark UI
+   Palette: #0d0f1a (base) · #161829 (surface) · #1e2038 (elevated)
+            #7c8cf8 (accent) · #a78bfa (accent-2) · #e05c5c (danger)
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #0d0f1a;
+  --surface:     #161829;
+  --elevated:    #1e2038;
+  --border:      #252840;
+  --accent:      #7c8cf8;
+  --accent-2:    #a78bfa;
+  --danger:      #e05c5c;
+  --success:     #4ade80;
+  --text:        #e2e4f0;
+  --text-muted:  #6b7280;
+  --text-dim:    #9ca3af;
+  --radius:      8px;
+  --radius-lg:   12px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.6);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.4);
+  --transition:  0.18s ease;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', system-ui, Arial, sans-serif;
+  font-size: 14px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2e3250; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3d4270; }
+
+/* ── Links & Inputs ───────────────────────────────────────────── */
+a { color: var(--accent); text-decoration: none; }
+button { cursor: pointer; }
+
+input, select, textarea {
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 7px 11px;
+  outline: none;
+  font-size: 13px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124,140,248,0.15);
+}
+select option { background: var(--elevated); }
+
+/* ── Button System ────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all var(--transition);
+  cursor: pointer;
+  min-height: 34px;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(124,140,248,0.35);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #6a7af0, #9474f0);
+  box-shadow: 0 4px 18px rgba(124,140,248,0.45);
+}
+
+.btn-secondary {
+  background: var(--elevated);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: #272b4a;
+  color: var(--text);
+  border-color: #3d4270;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #e05c5c, #c94e4e);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(224,92,92,0.3);
+}
+.btn-danger:hover {
+  background: linear-gradient(135deg, #ef6464, #d45555);
+  box-shadow: 0 4px 14px rgba(224,92,92,0.4);
+}
+
+.btn-sm { padding: 5px 11px; font-size: 12px; min-height: 28px; }
+.btn-xs { padding: 3px 8px; font-size: 11px; min-height: 24px; }
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 6px 8px;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.btn-ghost:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+/* ── Icon Buttons ─────────────────────────────────────────────── */
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all var(--transition);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+}
+.icon-btn:hover { color: var(--text); background: rgba(124,140,248,0.12); }
+.icon-btn:active { transform: scale(0.92); }
+.icon-btn.active { color: var(--accent); }
+.icon-btn.danger:hover { color: var(--danger); background: rgba(224,92,92,0.12); }
+
+.btn-icon { background: transparent; border: none; color: var(--text-muted); padding: 4px 6px; border-radius: 4px; }
+.btn-icon:hover { color: var(--text); background: var(--elevated); }
+
+/* ── Heart / Favorite ─────────────────────────────────────────── */
+.heart {
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color var(--transition), transform var(--transition);
+  line-height: 1;
+  display: inline-block;
+}
+.heart.active { color: var(--danger); }
+.heart:hover { color: var(--danger); transform: scale(1.2); }
+
+.heart-sm {
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color var(--transition), transform var(--transition);
+  display: inline-block;
+}
+.heart-sm.active { color: var(--danger); }
+.heart-sm:hover { color: var(--danger); transform: scale(1.15); }
+
+/* ── App Layout ───────────────────────────────────────────────── */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ── App Header ───────────────────────────────────────────────── */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  height: 52px;
+  position: relative;
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.app-header h1 {
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-right: 12px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.header-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 6px;
+}
+
+.header-spacer { flex: 1; }
+
+.song-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  background: var(--elevated);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* ── Main Content ─────────────────────────────────────────────── */
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Song Table ───────────────────────────────────────────────── */
+.song-table-wrap {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.song-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.song-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.song-table th {
+  background: var(--surface);
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.song-table th:hover { color: var(--text-dim); }
+
+.song-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(37,40,64,0.6);
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-row {
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.song-row:hover { background: rgba(30,32,56,0.7); }
+.song-row:hover .song-row-actions { opacity: 1; }
+.song-row.playing {
+  background: rgba(124,140,248,0.08) !important;
+  border-left: 2px solid var(--accent);
+}
+.song-row.playing td:first-child { padding-left: 10px; }
+
+.song-row.selected {
+  background: rgba(124,140,248,0.06);
+  outline: 1px solid rgba(124,140,248,0.2);
+}
+
+.song-title { font-weight: 500; color: var(--text); font-size: 13px; }
+.song-artist { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+.genre-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  background: rgba(124,140,248,0.1);
+  border: 1px solid rgba(124,140,248,0.2);
+  border-radius: 10px;
+  font-size: 11px;
+  color: #9ba8ff;
+}
+
+.rating-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(74,222,128,0.1);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--success);
+  font-weight: 600;
+}
+
+/* Row actions (edit meta button) – always visible, dimmed */
+.song-row-actions {
+  opacity: 0.4;
+  transition: opacity var(--transition);
+}
+/* ── Pagination ───────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.page-info { color: var(--text-muted); font-size: 12px; }
+
+/* ── Player Bar ───────────────────────────────────────────────── */
+.player-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 10px 16px 12px;
+  flex-shrink: 0;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+}
+
+.player-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.player-title-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.player-song-title {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text);
+}
+.player-song-artist {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-meta-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.player-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ── Waveform ─────────────────────────────────────────────────── */
+.waveform-wrap {
+  position: relative;
+  margin: 6px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.2);
+}
+
+/* ── Player Bottom Controls ───────────────────────────────────── */
+.player-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.player-time {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  min-width: 90px;
+}
+
+.player-btns {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Play/Pause button slightly larger */
+.btn-play {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 2px 12px rgba(124,140,248,0.4);
+}
+.btn-play:hover { transform: scale(1.06); box-shadow: 0 4px 18px rgba(124,140,248,0.55); }
+.btn-play:active { transform: scale(0.95); }
+
+.player-zoom-vol {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+.player-zoom-vol label { font-size: 10px; color: var(--text-muted); white-space: nowrap; }
+.player-zoom-vol input[type=range] {
+  accent-color: var(--accent);
+  height: 20px;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* ── Clip Mode ────────────────────────────────────────────────── */
+.clip-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(224,92,92,0.07);
+  border: 1px solid rgba(224,92,92,0.25);
+  border-radius: var(--radius);
+  padding: 6px 12px;
+  flex-wrap: wrap;
+}
+
+.clip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--danger);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.clip-time {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.clip-fade-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: background var(--transition);
+}
+.clip-fade-label:hover { background: rgba(255,255,255,0.05); }
+.clip-fade-label input { accent-color: var(--accent); cursor: pointer; }
+
+.clip-indicator {
+  position: absolute;
+  top: 0; bottom: 0;
+  background: rgba(224,92,92,0.2);
+  pointer-events: none;
+  border: 1px solid rgba(224,92,92,0.5);
+}
+
+/* ── Modals ───────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: overlay-in 0.15s ease;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  width: 600px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(124,140,248,0.08);
+  animation: modal-in 0.18s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes modal-in {
+  from { transform: scale(0.94) translateY(8px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-box h2 {
+  font-size: 17px;
+  margin-bottom: 20px;
+  color: var(--text);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.modal-header h2 { margin-bottom: 0; }
+
+.form-row { margin-bottom: 14px; }
+.form-row label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+.form-row input, .form-row textarea, .form-row select { width: 100%; }
+.form-row textarea { min-height: 80px; resize: vertical; }
+.form-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 22px; }
+
+.filepath-display {
+  font-size: 11px;
+  color: #555;
+  background: var(--bg);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  word-break: break-all;
+  border: 1px solid var(--border);
+}
+
+/* ── Filter Modal ─────────────────────────────────────────────── */
+.filter-section { margin-bottom: 18px; }
+.filter-section h3 {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.checkbox-grid { display: flex; flex-wrap: wrap; gap: 6px; max-height: 150px; overflow-y: auto; }
+.checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 12px; cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: background var(--transition); }
+.checkbox-item:hover { background: rgba(255,255,255,0.04); }
+.checkbox-item input { accent-color: var(--accent); }
+
+/* ── Now Playing Bars ─────────────────────────────────────────── */
+.now-playing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.bar {
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: eq 0.8s ease-in-out infinite alternate;
+}
+.bar:nth-child(1) { height: 7px; animation-delay: 0s; }
+.bar:nth-child(2) { height: 12px; animation-delay: 0.2s; }
+.bar:nth-child(3) { height: 5px; animation-delay: 0.4s; }
+@keyframes eq {
+  from { transform: scaleY(0.4); }
+  to { transform: scaleY(1); }
+}
+
+/* ── Star Rating ──────────────────────────────────────────────── */
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+.star {
+  color: #33374a;
+  cursor: pointer;
+  transition: color 0.12s, transform 0.12s;
+  line-height: 1;
+}
+.star:hover { transform: scale(1.15); }
+.star-rating:hover .star { color: #f0a030; }
+.star.active { color: #f0a030; }
+
+/* ── Fade Overlays ────────────────────────────────────────────── */
+.fade-overlay { position: absolute; top: 0; bottom: 0; pointer-events: none; }
+.fade-in-overlay {
+  background: linear-gradient(to right, rgba(74,222,128,0.35), transparent);
+  border-left: 2px solid rgba(74,222,128,0.7);
+}
+.fade-out-overlay {
+  background: linear-gradient(to left, rgba(74,222,128,0.35), transparent);
+  border-right: 2px solid rgba(74,222,128,0.7);
+}
+
+/* ── Danger Icon Button ───────────────────────────────────────── */
+.btn-danger-icon { color: var(--danger) !important; }
+.btn-danger-icon:hover {
+  background: rgba(224,92,92,0.12) !important;
+  color: #ff7777 !important;
+}
+
+/* ── Zoom buttons ─────────────────────────────────────────────── */
+.zoom-btn { font-size: 13px !important; }
+
+/* ── Meta readonly ────────────────────────────────────────────── */
+.meta-readonly {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Empty state ──────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ── Filter active badge ──────────────────────────────────────── */
+.filter-active {
+  background: rgba(124,140,248,0.15) !important;
+  border-color: rgba(124,140,248,0.4) !important;
+  color: var(--accent) !important;
+}
+
+/* ── Playlist dropdown in table ───────────────────────────────── */
+.playlist-select {
+  font-size: 11px;
+  padding: 2px 6px;
+  max-width: 85px;
+  background: var(--elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.playlist-select:hover { border-color: var(--accent); }
+
+/* ── Keyboard shortcut badge ──────────────────────────────────── */
+.kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: monospace;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+/* ── Help overlay ─────────────────────────────────────────────── */
+.help-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+  animation: overlay-in 0.15s ease;
+}
+.help-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  width: 520px;
+  max-width: 95vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+  animation: modal-in 0.18s ease;
+}
+.help-box h2 { font-size: 16px; margin-bottom: 18px; color: var(--text); }
+.help-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+}
+.help-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(37,40,64,0.5);
+  font-size: 12px;
+}
+.help-row:last-child { border-bottom: none; }
+.help-key { display: flex; gap: 4px; }
+.help-desc { color: var(--text-dim); }
+.help-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  padding: 10px 0 6px;
+  grid-column: 1 / -1;
+}
+
+/* ── Scrollbar in modals ──────────────────────────────────────── */
+.modal-box::-webkit-scrollbar, .help-box::-webkit-scrollbar { width: 4px; }
+.modal-box::-webkit-scrollbar-thumb, .help-box::-webkit-scrollbar-thumb { background: #2e3250; border-radius: 2px; }
+
+/* ── Tooltip enhancement via title ───────────────────────────── */
+[title] { cursor: default; }
+button[title], [title][onClick], [title][role=button] { cursor: pointer; }
+
+/* ── Order dropdown ───────────────────────────────────────────── */
+.order-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 0;
+  min-width: 200px;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  animation: modal-in 0.15s ease;
+}
+.order-section { padding: 3px 0; border-bottom: 1px solid var(--border); }
+.order-section:last-child { border-bottom: none; }
+.order-section strong {
+  display: block;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.order-option {
+  padding: 7px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background var(--transition);
+  color: var(--text-dim);
+}
+.order-option:hover { background: rgba(124,140,248,0.1); color: var(--text); }
+.order-option.active { background: rgba(124,140,248,0.2); color: var(--accent); }
+
+/* ── Misc utilities ───────────────────────────────────────────── */
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--accent); }
+.gap-2 { gap: 8px; }
+.flex-center { display: flex; align-items: center; }
+
+/* ================================================================
+   Responsive: Mobile / Smartphone
+   ----------------------------------------------------------------
+   Ziel: Der Titel ist IMMER lesbar. Spalten werden nach Priorität
+   uber useColumnVisibility() ausgeblendet (JS), hier wird zusatzlich
+   das Layout fuer schmale Displays optimiert.
+
+   Stufen:
+     < 1100px  kompakt: Genre, Playlist, Kommentar, Lange aus
+     <  700px  sehr schmal: zusatzlich Rating und Favorit aus
+   ================================================================ */
+
+@media (max-width: 1100px) {
+  .song-table th { padding: 8px 8px; font-size: 9px; }
+  .song-table td { padding: 8px 8px; }
+  .song-title { font-size: 13px; }
+  .song-artist { font-size: 11px; }
+}
+
+@media (max-width: 700px) {
+  /* Header: kompakter, Icons bleiben bedienbar */
+  .app-header {
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .app-header h1 {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .header-divider { display: none; }
+  .song-count {
+    font-size: 10px;
+    order: 10;
+  }
+  .icon-btn {
+    font-size: 15px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  /* Tabelle: Titel braucht den ganzen Platz */
+  .song-table {
+    table-layout: auto;
+  }
+  .song-table th,
+  .song-table td {
+    padding: 7px 6px;
+  }
+  .song-table th { font-size: 9px; }
+
+  /* Titel darf umbrechen statt abgeschnitten zu werden */
+  .song-title {
+    font-size: 13px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.3;
+  }
+  .song-artist {
+    font-size: 10px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Zeilen: grossere Touch-Flaeche */
+  .song-row td { padding-top: 10px; padding-bottom: 10px; }
+
+  /* Pagination kompakt */
+  .pagination { flex-wrap: wrap; gap: 4px; font-size: 11px; }
+  .page-info { font-size: 11px; }
+
+  /* Modale: fast volle Breite statt fester Mindestbreite */
+  .modal-box {
+    width: 96vw !important;
+    min-width: 0 !important;
+    max-width: 96vw !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Cleanup-/Recording-Tabellen nicht horizontal scrollen lassen,
+     sondern Inhalte umbrechen */
+  .modal-box table { font-size: 12px; }
+  .modal-box td,
+  .modal-box th { padding: 7px 6px !important; }
+}
+
+@media (max-width: 480px) {
+  .app-header h1 { font-size: 12px; }
+  .song-title { font-size: 12px; }
+  .song-artist { font-size: 10px; }
+  .icon-btn { min-width: 30px; min-height: 30px; font-size: 14px; }
+}
+
+/* Touch-Geraete: Hover-Effekte nicht "kleben" lassen */
+@media (hover: none) {
+  .song-row:hover { background: transparent; }
+  .song-row:active { background: rgba(124,140,248,0.12); }
+}

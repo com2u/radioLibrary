@@ -1,0 +1,19 @@
+services:
+  radio-library:
+    build: .
+    container_name: radio-library
+    pid: "host"
+    ports:
+      - "8080:80"
+    volumes:
+      - /mnt/radio:/mnt/radio
+      - /tmp:/host-tmp:ro
+    environment:
+      - RADIO_DIR=/mnt/radio
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/api/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
