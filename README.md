@@ -28,6 +28,21 @@ Radio Library lets you **own your music**. Every song played on your favorite ra
 ### Recording Control
 ![Recording Control](screenshots/03-recording.png)
 
+### Filter
+![Filter Dialog](screenshots/04-filter.png)
+
+### Sort Order
+![Sort Dialog](screenshots/05-sort.png)
+
+### Playlist Manager
+![Playlist Manager](screenshots/06-playlists.png)
+
+### Cleanup
+![Cleanup Dialog](screenshots/07-cleanup.png)
+
+### Keyboard Shortcuts
+![Shortcuts Help](screenshots/08-shortcuts.png)
+
 ## Architecture
 
 | Layer | Technology |
